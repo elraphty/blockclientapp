@@ -38,4 +38,4 @@ jobs:
 
       - run: yarn build
 
-      # - run: git push https://heroku:c604fd0c-e703-4cbe-8149-03d69b68cd3f@git.heroku.com/circle-trial.git master
+      - run: git push https://heroku:c604fd0c-e703-4cbe-8149-03d69b68cd3f@git.heroku.com/circle-trial.git master

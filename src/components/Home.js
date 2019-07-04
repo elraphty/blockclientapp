@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, FormGroup, Label, Button } from 'reactstrap';
+import { Input } from 'reactstrap';
 
 // components
 import Header from './inc/Header';

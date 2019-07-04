@@ -6,11 +6,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavLink
+} from 'reactstrap';
 
 export default class Example extends React.Component {
   constructor(props) {
