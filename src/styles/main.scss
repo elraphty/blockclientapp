@@ -6,6 +6,7 @@ html {
 
 body {
     background: $mainColor;
+    overflow-x: hidden;
 }
 
 .mynav {
@@ -71,4 +72,9 @@ body {
         text-transform: uppercase;
         font-weight: bold;
     }
+}
+
+.user-land-heading {
+    color: white;
+    margin-top: 50px;
 }

@@ -1,4 +1,11 @@
 import React from 'react';
+
+// REDUX
+import { connect } from 'react-redux';
+
+// REDUX ACTIONS
+import { signIn, signOut } from '../../redux/actions';
+
 import {
   Collapse,
   Navbar,
@@ -6,10 +13,14 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
+  DropdownToggle
 } from 'reactstrap';
 
-export default class Example extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
 
@@ -18,11 +29,25 @@ export default class Example extends React.Component {
       isOpen: false
     };
   }
+
+  componentDidMount() {
+    // console.log('User Token', this.props.user.token);
+  }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
+
+  logOut = () => {
+    if (this.props.signOut()) {
+      setTimeout(() => {
+        window.location.href = '/login';
+      });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -31,29 +56,51 @@ export default class Example extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/add-land">Add Land</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">View Lands</NavLink>
-              </NavItem>
-              {/* <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown> */}
+
+              {
+                (() => {
+                  if (this.props.user.token === null) {
+                    return (
+                      <React.Fragment>
+                        <NavItem>
+                          <NavLink href="/login">Login</NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink href="/signup">Sign up</NavLink>
+                        </NavItem>
+                      </React.Fragment>
+                    )
+                  } else {
+                    return (
+                      <React.Fragment>
+                        <NavItem>
+                          <NavLink href="">Mine</NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink href="">Consesus</NavLink>
+                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                              User
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                              <DropdownItem>
+                                <NavLink href="/add-land">Add Land</NavLink>
+                              </DropdownItem>
+                              <DropdownItem>
+                                <NavLink href="/view-land">View Land</NavLink>
+                              </DropdownItem>
+                              <DropdownItem divider />
+                              <DropdownItem>
+                                <NavLink href="#" onClick={this.logOut}>Logout</NavLink>
+                              </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                      </React.Fragment>
+                    )
+                  }
+                })()
+              }
             </Nav>
           </Collapse>
         </Navbar>
@@ -61,3 +108,10 @@ export default class Example extends React.Component {
     );
   }
 }
+
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps, { signIn, signOut })(Header);

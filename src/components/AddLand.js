@@ -1,10 +1,61 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Card, CardBody, Form, Input, FormGroup, Label, Button } from 'reactstrap';
+import { POST } from '../services/axiosService';
+import swal from 'sweetalert';
 
 // components
 import Header from './inc/Header';
 
 class AddLand extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: '',
+            coordinates: '',
+            address: '',
+            userId: '',
+            size: ''
+        }
+    }
+
+    handleChange = () => (e) => {
+        // console.log('Event', e);
+        
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    addLand = () => {
+
+        // alert(this.state.name);
+
+        let body = {
+            size: this.state.size,
+            address: this.state.address,
+            familyName: this.state.name,
+            coordinates: this.state.coordinates,
+            // userId: this.props.user.token      
+        }
+
+        POST('transaction/broadcast', body, this.props.user.token)
+            .then(res => {
+                // alert('Succces');
+                swal("Success!", "Successfully added land!", "success");
+                this.setState({
+                    name: '',
+                    address: '',
+                    familyName: '',
+                    coordinates: ''
+                });
+            })
+            .catch(e => {
+                // console.log('Error', e);
+                swal("Oops!", "Something went wrong!", "error");
+            })
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -18,22 +69,22 @@ class AddLand extends Component {
                                 </center>
                                 <Form>
                                     <FormGroup>
-                                        <Label for="exampleEmail">Family Name</Label>
-                                        <Input type="text" name="email" id="exampleEmail" placeholder="" />
+                                        <Label for="name">Family Name</Label>
+                                        <Input type="text" name="name" onChange={this.handleChange()} placeholder="" value={this.state.name} />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="examplePassword">Land Adress</Label>
-                                        <Input type="text" name="password" id="examplePassword" placeholder="" />
+                                        <Label for="address">Land Adress</Label>
+                                        <Input type="text" name="address" onChange={this.handleChange()} placeholder="" value={this.state.address} />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="examplePassword">Size</Label>
-                                        <Input type="text" name="password" id="examplePassword" placeholder="" />
+                                        <Label for="size">Size</Label>
+                                        <Input type="text" name="size" onChange={this.handleChange()} placeholder="" value={this.state.size} />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for="examplePassword">Date</Label>
-                                        <Input type="date" name="password" id="examplePassword" placeholder="" />
+                                        <Label for="coordinates">Coorinates</Label>
+                                        <Input type="text" name="coordinates" onChange={this.handleChange()} value={this.state.coordinates}  placeholder="" />
                                     </FormGroup>
-                                    <Button className="add-land-btn">Submit</Button>
+                                    <Button className="add-land-btn" onClick={this.addLand}>Submit</Button>
                                 </Form>
 
                             </CardBody>
@@ -45,4 +96,8 @@ class AddLand extends Component {
     }
 }
 
-export default AddLand;
+const mapStateToProps = state => ({
+    user: state.user
+});
+
+export default connect(mapStateToProps)(AddLand);
