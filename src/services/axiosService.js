@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://blockland.herokuapp.com/cl',
+    baseURL: 'https://blockland.herokuapp.com/',
     timeout: 5000
 })
 
