@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import ViewLand from './components/ViewLand';
 import TransferLand from './components/TransaferLand';
+import AddNode from './components/AddNode';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/view-land" component={ViewLand} exact></Route>
           <Route path="/login" component={Login} exact></Route>
           <Route path="/signup" component={Signup} exact></Route>
+          <Route path="/addnode" component={AddNode} exact></Route>
           <Route path="/transfer-land/:landid" component={TransferLand}></Route>
         </Switch>
       </Router>

@@ -1,5 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 
+// baseURL: 'https://blockland.herokuapp.com/',;
 const instance = axios.create({
     baseURL: 'https://blockland.herokuapp.com/',
     timeout: 5000
