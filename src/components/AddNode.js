@@ -34,7 +34,7 @@ class Login extends Component {
     login = () => {
         
         let body = {
-            node: this.state.node
+            newNodeUrl: this.state.node
         }
 
         POST('register-and-broadcast-node', body)
@@ -50,6 +50,7 @@ class Login extends Component {
                 }
             })
             .catch(e => {
+                console.log('Error', e.message);
                 swal("Oops!", "Something went wrong!", "error");
             })
     }
