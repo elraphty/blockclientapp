@@ -23,7 +23,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        if(this.props.user.token !== null) {
+        if(this.props.user.data.token !== null) {
             window.location.href = '/';
         }
     }

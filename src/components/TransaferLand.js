@@ -34,7 +34,7 @@ class AddLand extends Component {
 
         console.log('Body', body);
 
-        POST('smart/contract-broadcast', body, this.props.user.token)
+        POST('smart/contract-broadcast', body, this.props.user.data.token)
             .then(res => {
                 // alert('Succces');
                 swal("Success!", "Successfully transfered land!", "success");

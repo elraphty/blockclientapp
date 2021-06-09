@@ -20,12 +20,12 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        if (this.props.user.token === null) {
+        if (this.props.user.data.token === null) {
             window.location.href = '/login';
         }
 
 
-        GET('/blockchain', this.props.user.token)
+        GET('/blockchain', this.props.user.data.token)
             .then(res => {
                 // console.log('Blocks', res.data.chain);
                 this.setState({
@@ -36,7 +36,7 @@ class Home extends Component {
                 console.log('View Land Error', e);
             });
 
-        GET('/transactions', this.props.user.token)
+        GET('/transactions', this.props.user.data.token)
             .then(res => {
                 // console.log('Transactions', res.data);
                 this.setState({
