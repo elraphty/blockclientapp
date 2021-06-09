@@ -41,6 +41,7 @@ class Login extends Component {
 
         POST('user/login', body)
             .then(res => {
+                console.log('Login Data ===', res.data.user)
                 swal("Success!", "Successful login!", "success");
 
                 this.setState({
@@ -50,8 +51,8 @@ class Login extends Component {
 
                 if(this.props.signIn(
                     {
-                        token: res.data.token,
-                        id: res.data._id
+                        token: res.data.user.token,
+                        id: res.data.user._id
                     }
                 )) {
                     window.location.href = '/';
