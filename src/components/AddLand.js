@@ -39,7 +39,9 @@ class AddLand extends Component {
             userId: this.props.user.data.id      
         }
 
-        POST('transaction/broadcast', body, this.props.user.token)
+        console.log('Land Body ===', body);
+
+        POST('transaction/broadcast', body, this.props.user.data.token)
             .then(res => {
                 // alert('Succces');
                 swal("Success!", "Successfully added land!", "success");

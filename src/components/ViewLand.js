@@ -17,11 +17,11 @@ class ViewLand extends Component {
     }
 
     componentDidMount() {
-        GET('/user/lands', this.props.user.data.id)
+        GET(`/user/lands/${this.props.user.data.id}`, this.props.user.data.token)
             .then(res => {
-                // console.log('View Lands', res.data);
+                console.log('View Lands', res.data);
                 this.setState({
-                    lands: res.data.lands
+                    lands: res.data
                 })
             })
             .catch(e => {
