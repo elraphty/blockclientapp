@@ -1,7 +1,10 @@
 import { SIGNIN, SIGNOUT } from '../actions/types';
 
 const initialState = {
-    token: null
+    data: {
+      token: null,
+      id: null
+    }
 }
 
 export default function (state = initialState, action) {
@@ -9,12 +12,15 @@ export default function (state = initialState, action) {
         case SIGNIN:
             return {
                 ...state,
-                token: action.payload
+                data: action.payload
             }
         case SIGNOUT:
             return {
                 ...state,
-                token: null
+                data: {
+                    token: null,
+                    id: null
+                }
             }
         default:
             return state;

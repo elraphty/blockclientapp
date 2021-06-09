@@ -3,11 +3,11 @@ import {
     SIGNOUT
 } from './types';
 
-export function signIn(token) {
+export function signIn(data) {
     return function (dispatch) {
         dispatch({
             type: SIGNIN,
-            payload: token
+            payload: data
         });
 
         return true;

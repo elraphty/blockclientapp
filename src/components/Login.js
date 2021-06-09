@@ -48,7 +48,12 @@ class Login extends Component {
                     pass: ''
                 });
 
-                if(this.props.signIn(res.data.token)) {
+                if(this.props.signIn(
+                    {
+                        token: res.data.token,
+                        id: res.data._id
+                    }
+                )) {
                     window.location.href = '/';
                 }
             })

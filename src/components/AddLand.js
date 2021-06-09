@@ -36,7 +36,7 @@ class AddLand extends Component {
             address: this.state.address,
             familyName: this.state.name,
             coordinates: this.state.coordinates,
-            // userId: this.props.user.token      
+            userId: this.props.user.data.id      
         }
 
         POST('transaction/broadcast', body, this.props.user.token)
