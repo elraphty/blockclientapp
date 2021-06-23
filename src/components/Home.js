@@ -27,25 +27,26 @@ class Home extends Component {
 
         GET('/blockchain', this.props.user.data.token)
             .then(res => {
-                // console.log('Blocks', res.data.chain);
+                // console.log('Blocks', res.data.pendingTransactions);
                 this.setState({
-                    blocks: res.data.chain
+                    blocks: res.data.chain,
+                    transactions: res.data.pendingTransactions,
                 })
             })
             .catch(e => {
                 console.log('View Land Error', e);
             });
 
-        GET('/transactions', this.props.user.data.token)
-            .then(res => {
-                // console.log('Transactions', res.data);
-                this.setState({
-                    transactions: res.data
-                })
-            })
-            .catch(e => {
-                console.log('Transaction Error', e);
-            });
+        // GET('/transactions', this.props.user.data.token)
+        //     .then(res => {
+        //         // console.log('Transactions', res.data);
+        //         this.setState({
+        //             transactions: res.data
+        //         })
+        //     })
+        //     .catch(e => {
+        //         console.log('Transaction Error', e);
+        //     });
     }
 
     listTransactions = () => {
@@ -74,6 +75,7 @@ class Home extends Component {
                     <tr>
                         <th scope="row">{i + 1}</th>
                         <td>{block.blockTime}</td>
+                        <td>{block.nonce}</td>
                         {/* <td>{block.hash}</td>
                         <td>{block.previousBlockHash}</td> */}
                         <td>{block.transactions.length}</td>
@@ -103,6 +105,7 @@ class Home extends Component {
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Time</th>
+                                                    <th>Nonce</th>
                                                     {/* <th width={'20%'}>Hash</th>
                                                     <th>Previous Hash</th> */}
                                                     <th>Transactions</th>

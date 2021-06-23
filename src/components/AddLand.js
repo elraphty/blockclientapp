@@ -49,7 +49,8 @@ class AddLand extends Component {
                     name: '',
                     address: '',
                     familyName: '',
-                    coordinates: ''
+                    coordinates: '',
+                    size: '',
                 });
             })
             .catch(e => {

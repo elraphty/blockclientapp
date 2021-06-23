@@ -2,8 +2,7 @@ import axios from 'axios';
 
 // baseURL: 'https://blockland.herokuapp.com/',;
 const instance = axios.create({
-    baseURL: 'https://blockland.herokuapp.com/',
-    timeout: 200000000000
+    baseURL: 'https://blockland.herokuapp.com/'
 })
 
 export const POST = (link, body, token) => {
