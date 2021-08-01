@@ -39,7 +39,7 @@ class AddLand extends Component {
             userId: this.props.user.data.id      
         }
 
-        console.log('Land Body ===', body);
+        // console.log('Land Body ===', body);
 
         POST('transaction/broadcast', body, this.props.user.data.token)
             .then(res => {

@@ -50,7 +50,6 @@ class Home extends Component {
     }
 
     listTransactions = () => {
-
         return this.state.transactions.map((trans, i) => {
             return (
                 <React.Fragment key={i}>
@@ -65,7 +64,6 @@ class Home extends Component {
                 </React.Fragment>
             )
         });
-
     }
 
     listItems = () => {
