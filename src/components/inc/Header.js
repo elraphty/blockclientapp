@@ -111,9 +111,9 @@ class Header extends React.Component {
                           User
                         </DropdownToggle>
                         <DropdownMenu right>
-                          <DropdownItem>
+                          {/* <DropdownItem>
                             <NavLink href="/add-land">Add Land</NavLink>
-                          </DropdownItem>
+                          </DropdownItem> */}
                           <DropdownItem>
                             <NavLink href="/view-land">View Land</NavLink>
                           </DropdownItem>

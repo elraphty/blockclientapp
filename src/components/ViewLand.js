@@ -17,7 +17,7 @@ class ViewLand extends Component {
     }
 
     componentDidMount() {
-        GET(`/user/lands/${this.props.user.data.id}`, this.props.user.data.token)
+        GET(`/landlist/${this.props.user.data.id}`, this.props.user.data.token)
             .then(res => {
                 console.log('View Lands', res.data);
                 this.setState({

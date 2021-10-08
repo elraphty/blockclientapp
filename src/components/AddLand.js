@@ -54,7 +54,7 @@ class AddLand extends Component {
                 });
             })
             .catch(e => {
-                // console.log('Error', e);
+                // console.log('Error', e)
                 swal("Oops!", "Something went wrong!", "error");
             })
     }
