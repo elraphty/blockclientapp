@@ -39,6 +39,7 @@ class ViewLand extends Component {
                         <td>{land.familyName}</td>
                         <td>{land.address}</td>
                         <td>{land.coordinates}</td>
+                        <td>{land.certificateNum}</td>
                         <td>{land.size}</td>
                         <td> <Link to={`/transfer-land/${land._id}`}><i className="fa fa-arrow-right" /></Link></td>
                     </tr>
@@ -65,6 +66,7 @@ class ViewLand extends Component {
                                         <th>Familyname</th>
                                         <th>Land address</th>
                                         <th>Coordinates</th>
+                                        <th>Certificate No</th>
                                         <th>Size</th>
                                         <th>Transfer</th>
                                     </tr>
